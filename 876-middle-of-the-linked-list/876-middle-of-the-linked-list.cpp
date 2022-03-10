@@ -10,12 +10,23 @@
  */
 class Solution {
 public:
-    ListNode* middleNode(ListNode* head) {
-        vector<ListNode*> arr = {head};
+//     ListNode* middleNode(ListNode* head) {
+//         vector<ListNode*> arr = {head};
         
-        while(arr.back()->next != NULL){
-            arr.push_back(arr.back()->next);
+//         while(arr.back()->next != NULL){
+//             arr.push_back(arr.back()->next);
+//         }
+//         return arr[arr.size()/2];
+//     }
+    
+    ListNode* middleNode(ListNode* head){
+        ListNode* fast = head; 
+        ListNode *slow = head;
+        
+        while(fast != NULL && fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        return arr[arr.size()/2];
+        return slow;
     }
 };
