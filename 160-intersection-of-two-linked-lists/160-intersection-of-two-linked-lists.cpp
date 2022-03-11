@@ -22,9 +22,9 @@ public:
             headA = headA->next;
         }
         return NULL;
-        **/
         
-        //Brute Force2 : TC: O(n), SC: O(n)
+        Brute Force2 : TC: O(n), SC: O(n)
+        
         unordered_map<ListNode*, int> m;
         while(headA != NULL){
             m[headA]++;
@@ -37,5 +37,17 @@ public:
             headB = headB->next;
         }
         return NULL;
+        **/
+        
+        if(!headA || !headB) return NULL;
+        
+        ListNode* ptr1 = headA;
+        ListNode* ptr2 = headB;
+        
+        while(ptr1 != ptr2){
+            ptr1 = ptr1 == NULL? headB : ptr1->next;
+            ptr2 = ptr2 == NULL? headA : ptr2->next;
+        }
+        return ptr2;
     }
 };
