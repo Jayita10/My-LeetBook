@@ -4,7 +4,7 @@ public:
         int n = nums.size();
         
         /** 
-        Tc: O(n*n) SC: O(1)
+        !st Approach: TC: O(n*n) SC: O(1)
 
         int count = 0;
         for(int i=0;i<n-1;i++){
@@ -14,7 +14,8 @@ public:
             }
         }
         return count;
-        **/
+        
+        2nd Approach: TC: O(nlogn), SC: O(1)
         
         sort(nums.begin(),nums.end());
         int count = 0;
@@ -25,6 +26,15 @@ public:
             else{
                 i = j;
             }
+        }
+        return count;
+        **/
+        
+        int freq[101] = {0};
+        int count = 0;
+        
+        for(int i=0;i<n;i++){
+            count += freq[nums[i]]++;
         }
         return count;
     } 
