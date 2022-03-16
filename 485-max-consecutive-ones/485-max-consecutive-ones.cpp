@@ -6,7 +6,7 @@ public:
             if(i == 0)
                 count = 0;
             else{
-                count += i;
+                count++;
             }
             maxi = max(maxi,count);
         }
