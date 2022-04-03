@@ -11,6 +11,6 @@ public:
             maxDiff = max(maxDiff, diff);
             mini = min(mini, nums[i]);
         }
-        return (maxDiff == 0)? -1 : maxDiff;
+        return (maxDiff == 0)? -1 : maxDiff; //as for duplicates, the val will be 0
     }
 };
