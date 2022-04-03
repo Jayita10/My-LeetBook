@@ -7,13 +7,10 @@ public:
         int n = nums.size();
         
         for(int i=1;i<n;i++){
-            if(nums[i] == nums[i-1]) i++;
-            else{
             int diff = nums[i] - mini;
             maxDiff = max(maxDiff, diff);
             mini = min(mini, nums[i]);
-            }
         }
-        return maxDiff;
+        return (maxDiff == 0)? -1 : maxDiff;
     }
 };
