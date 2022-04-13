@@ -12,7 +12,7 @@ class Solution {
             profit = max(take, nottake);
         }
         else{
-            int sell = prices[idx] + solve(idx+1, 1, dp, prices);
+            int sell = prices[idx] + solve(idx, 1, dp, prices);
             int notsell = 0 + solve(idx+1, 0, dp, prices);
             profit = max(sell,notsell);
         }
