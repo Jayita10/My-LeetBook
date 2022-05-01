@@ -1,1 +1,1 @@
-​
+[same type pblm](https://codeforces.com/problemset/problem/1020/B?f0a28=1)
