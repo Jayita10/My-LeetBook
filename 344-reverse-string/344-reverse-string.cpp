@@ -9,8 +9,13 @@ class Solution {
     }
 public:
     void reverseString(vector<char>& s) {
-        vector<char> temp;
         int n = s.size();
-        s = reverse(s,temp,n-1);
+        int l = 0, r = n-1;
+        while(l <= r){
+            swap(s[l],s[r]);
+            l++;
+            r--;
+        }
+        
     }
 };
