@@ -22,6 +22,9 @@ public:
         vector<int> ans;
         //postorder(root, ans);
         
+        // using 2 stack
+        
+        /*
         if(root == NULL) return ans;
         
         stack<TreeNode*> st1, st2;
@@ -42,7 +45,40 @@ public:
             st2.pop();
             ans.push_back(node->val);
         }
+        */
         
+        
+        // using 1 stack
+        
+        if(root == NULL) return ans;
+        
+        stack<TreeNode*> st;
+        TreeNode* curr = root;
+        TreeNode* temp;
+        
+        while(curr != NULL || !st.empty()){
+            if(curr != NULL){
+                st.push(curr);
+                curr = curr->left;
+            }
+            else{
+                temp = st.top()->right;
+                
+                if(temp == NULL){
+                    temp = st.top();
+                    st.pop();
+                    ans.push_back(temp->val);
+                    while(!st.empty() && temp == st.top()->right){
+                        temp = st.top();
+                        st.pop();
+                        ans.push_back(temp->val);
+                    }
+                }
+                else{
+                    curr = temp;
+                }
+            }
+        }
         
         return ans;
     }
