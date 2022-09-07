@@ -1,23 +1,26 @@
 class Solution {
-    void dfs(string tiles, string s, map<int, int> flag, set<string>& ans){
+    void solve(string tiles, unordered_map<int, bool> &vis, string curr, set<string>& ans){
+        
+        if(curr.size() > tiles.size()) return;
+        ans.insert(curr);
+        
         for(int i=0;i<tiles.size();i++){
-            if(flag[i] != 1){
-                s.push_back(tiles[i]);
-                flag[i] = 1;
-                ans.insert(s);
-                dfs(tiles,s, flag, ans);
-                flag[i] = 0;
-                s.pop_back();
-            }
+            if(vis[i]) continue;
+            curr += tiles[i];
+            vis[i] = true;
+            solve(tiles, vis, curr, ans);
+            
+            curr.pop_back();
+            vis[i] = false;
         }
     }
 public:
     int numTilePossibilities(string tiles) {
+        unordered_map<int, bool> vis;
+        string curr = "";
         set<string> ans;
-        map<int, int> flag;
-        string s;
-        dfs(tiles, s, flag, ans);
-         
-        return ans.size();
+        
+        solve(tiles, vis, curr, ans);
+        return ans.size()-1;
     }
 };
