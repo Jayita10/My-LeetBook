@@ -43,7 +43,7 @@ public:
         
         for(int i=0;i<v;i++){
             if(coloring[i] == -1){
-                //if(bfs(i, graph, coloring) == false) return false;
+                if(bfs(i, graph, coloring) == false) return false;
                 if(dfs(i, graph, coloring, 0) == false) return false;
             }
         }
