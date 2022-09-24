@@ -19,6 +19,21 @@ class Solution {
         }
         return true;
     }
+    
+    
+    bool dfs(int node, vector<vector<int>>& graph, int coloring[], int col){
+        coloring[node] = col;
+        
+        for(auto it : graph[node]){
+            if(coloring[it] == -1){
+                if(dfs(it, graph, coloring, !col) == false) 
+                    return false;
+            }
+            else if(coloring[it] == col) return false;
+        }
+        return true;
+    }
+    
 public:
     bool isBipartite(vector<vector<int>>& graph) {
         int v = graph.size();
@@ -28,7 +43,8 @@ public:
         
         for(int i=0;i<v;i++){
             if(coloring[i] == -1){
-                if(bfs(i, graph, coloring) == false) return false;
+                //if(bfs(i, graph, coloring) == false) return false;
+                if(dfs(i, graph, coloring, 0) == false) return false;
             }
         }
         return true;
