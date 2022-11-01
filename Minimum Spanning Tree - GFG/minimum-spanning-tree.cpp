@@ -122,7 +122,7 @@ class Solution{
             
             if(ds.findParent(u) != ds.findParent(v)){
                 wtSum += edgeWt;
-                ds.unionByRank(u, v);
+                ds.unionBySize(u, v);
             }
         }
         return wtSum;
