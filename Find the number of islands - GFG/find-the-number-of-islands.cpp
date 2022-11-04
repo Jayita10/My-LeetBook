@@ -30,6 +30,23 @@ class Solution {
             }
         }
     }
+    
+    void dfs(int row, int col, int n, int m, vector<vector<int>> &vis, vector<vector<char>>& grid){
+        vis[row][col] = 1;
+        
+        for(int delRow = -1; delRow <= 1; delRow++){
+            for(int delCol = -1; delCol <= 1; delCol++){
+                int nrow = row + delRow;
+                int ncol = col + delCol;
+                
+                if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m
+                && grid[nrow][ncol] == '1' && !vis[nrow][ncol]){
+                    vis[nrow][ncol] = 1;
+                    dfs(nrow, ncol, n, m, vis, grid);
+                }
+            }
+        }
+    }
   public:
     // Function to find the number of islands.
     int numIslands(vector<vector<char>>& grid) {
@@ -43,7 +60,8 @@ class Solution {
             for(int col = 0; col<m; col++){
                 if(!vis[row][col] && grid[row][col] == '1'){
                     cnt++;
-                    bfs(row, col, n, m, vis, grid);
+                    //bfs(row, col, n, m, vis, grid);
+                    dfs(row, col, n, m, vis, grid);
                 }
             }
         }
