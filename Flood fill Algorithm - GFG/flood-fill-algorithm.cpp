@@ -20,7 +20,6 @@ private:
             
             if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m
             && image[nrow][ncol] == init_col && ans[nrow][ncol] != newColor) {
-                ans[nrow][ncol] = newColor;
                 dfs(nrow, ncol, init_col, newColor, image, ans);
             }
         }
