@@ -14,10 +14,10 @@ class Solution{
         long long maxi = 0;
         
         for(int i=1;i<N;i++){
-            maxi = arr[i-1] + arr[i];
-            if(maxi > sum) sum = maxi;
+            sum = arr[i-1] + arr[i];
+            if(sum > maxi) maxi = sum;
         }
-        return sum;
+        return maxi;
     }
 };
 
