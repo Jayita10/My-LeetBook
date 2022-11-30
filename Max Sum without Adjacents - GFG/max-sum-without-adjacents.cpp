@@ -17,17 +17,11 @@ class Solution{
         return dp[idx] = max(pick, notpick);
     }
     
-    
-public:	
-	// calculate the maximum sum with out adjacent
-	int findMaxSum(int *arr, int n) {
-	   // vector<int> dp(n, -1);
-	   // return f(n-1, arr, dp);
+    int f_bottom(int *arr, int n){
+        int dp[n] = {0};
+	    dp[0] = arr[0];
 	   
-	   int dp[n] = {0};
-	   dp[0] = arr[0];
-	   
-	   for(int i=1;i<n;i++){
+	    for(int i=1;i<n;i++){
 	       int maxi = INT_MIN;
 	       
 	       int pick = arr[i];
@@ -35,9 +29,34 @@ public:
 	       int notpick = dp[i-1];
 	       
 	       dp[i] = max(pick, notpick);
-	   }
+	    }
 	   
 	   return dp[n-1];
+    }
+    
+public:	
+	// calculate the maximum sum with out adjacent
+	int findMaxSum(int *arr, int n) {
+	   // vector<int> dp(n, -1);
+	   // return f_top(n-1, arr, dp);
+	   
+	   // return f_bottom(arr, n);
+	   
+	   if(n == 1) return arr[0];
+	   if(n == 2) return max(arr[1], arr[0]);
+	   
+	   int prev1 = max(arr[1], arr[0]);
+	   int prev2 = arr[0];
+	   
+	   for(int i=2;i<n;i++){
+	       int op1 = arr[i] + prev2;
+	       int op2 = prev1;
+	       
+	       int curri = max(op1, op2);
+	       prev2 = prev1;
+	       prev1 = curri;
+	   }
+	   return prev1;
 	}
 };
 
