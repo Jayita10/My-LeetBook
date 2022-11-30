@@ -21,8 +21,23 @@ class Solution{
 public:	
 	// calculate the maximum sum with out adjacent
 	int findMaxSum(int *arr, int n) {
-	    vector<int> dp(n, -1);
-	    return f(n-1, arr, dp);
+	   // vector<int> dp(n, -1);
+	   // return f(n-1, arr, dp);
+	   
+	   int dp[n] = {0};
+	   dp[0] = arr[0];
+	   
+	   for(int i=1;i<n;i++){
+	       int maxi = INT_MIN;
+	       
+	       int pick = arr[i];
+	       if(i > 1) pick += dp[i-2];
+	       int notpick = dp[i-1];
+	       
+	       dp[i] = max(pick, notpick);
+	   }
+	   
+	   return dp[n-1];
 	}
 };
 
