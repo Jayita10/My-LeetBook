@@ -8,9 +8,17 @@ class Solution {
     int setBits(int num) {
         int cnt = 0;
         
+        // logn
+        // while(num){
+        //     cnt += num & 1;
+        //     num >>= 1;
+        // }
+        
+        // another method
+        // loop == no of set bits == TC
         while(num){
-            cnt += num & 1;
-            num >>= 1;
+            cnt++;
+            num = num & (num-1);
         }
         return cnt;
     }
