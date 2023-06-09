@@ -16,11 +16,13 @@ class Solution {
         
         // another method
         // loop == no of set bits == TC
-        while(num){
-            cnt++;
-            num = num & (num-1);
-        }
-        return cnt;
+        // while(num){
+        //     cnt++;
+        //     num = num & (num-1);
+        // }
+        // return cnt;
+        
+        return __builtin_popcount(num);
     }
 };
 
